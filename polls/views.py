@@ -12,7 +12,4 @@ def time(request):
     with connection.cursor() as cursor:
         cursor.execute(query)
         time = cursor.fetchone()
-        current_time= {"psql" : {"uptime": str(time[0])}}
-        json_time= json.dump(current_time)
-
-    return HttpResponse(json_time, content_type='application/json')
+    return HttpResponse(str(time[0]), content_type='application/json')
