@@ -11,5 +11,5 @@ def time(request):
     query = "SELECT date_trunc('second', current_timestamp -pg_postmaster_start_time()) as uptime;"
     with connection.cursor() as cursor:
         cursor.execute(query)
-        time = str(cursor.fetchone())
-    return HttpResponse(json.dump(time), content_type='application/json')
+        time = cursor.fetchone()
+    return HttpResponse(str(time[0]), content_type='application/json')
