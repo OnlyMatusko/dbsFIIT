@@ -12,5 +12,4 @@ def time(request):
     with connection.cursor() as cursor:
         cursor.execute(query)
         time = str(cursor.fetchone())
-        finaltime = getattr(time, "seconds")
-    return HttpResponse(finaltime, content_type='application/json')
+    return HttpResponse(json.dump(time), content_type='application/json')
