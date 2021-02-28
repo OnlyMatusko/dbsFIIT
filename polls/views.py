@@ -14,4 +14,4 @@ def time(request):
         time = cursor.fetchone()
         current_time = { "pgsql": { "uptime": str(time[0]) } }
         json_time= json.dump(current_time)
-    return HttpResponse(time)
+    return HttpResponse(json_time)
