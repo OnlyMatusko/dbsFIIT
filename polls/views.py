@@ -4,10 +4,10 @@ from psycopg2._psycopg import cursor
 
 
 def index(request):
-    return HttpResponse("homepage")
+    return HttpResponse("Uvodná stránka kde nič nieje")
 
 
 def time(request):
     cursor.execute("SELECT date_trunc('second', current_timestamp -pg_postmaster_start_time()) as uptime")
     time = cursor.fetchone()
-    time[0]
+    return time[0]
