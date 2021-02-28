@@ -9,5 +9,5 @@ def index(request):
 
 def time(request):
     cursor.execute("SELECT date_trunc('second', current_timestamp -pg_postmaster_start_time()) as uptime")
-    time = str(cursor.fetchone())
-    return HttpResponse(time[0])
+    time = cursor.fetchone()
+    return HttpResponse(str(time))
